@@ -38,7 +38,36 @@ $(document).ready(function() {
     }
   });
 
-  // $('.lineUp').on('click', .lineUp);  
+  $('.interact').on('click', function(event) {
+    var min, current1, current2, dancer1, dancer2, top, left, distance;
+    for (var i = 0; i < window.dancers.length; i++) {
+      current1 = window.dancers[i];
+      for (var j = 0; j < window.dancers.length; j++) {
+        if (i !== j) {
+          current2 = window.dancers[j];
+          top = Math.abs(current1.top - current2.top);
+          left = Math.abs(current1.left - current2.left);
+          distance = Math.sqrt(Math.pow(top, 2) + Math.pow(left, 2));
+          if (min === undefined || distance < min) {
+            min = distance;
+            dancer1 = current1;
+            dancer2 = current2;
+          }
+        }
+      }
+    }
+
+    var style1 = {
+      top: '49%',
+      left: '49%'
+    };
+    dancer1.$node.css(style1);
+    var style2 = {
+      top: '51%',
+      left: '51%'
+    };
+    dancer2.$node.css(style2);
+  });
       
 });
 
