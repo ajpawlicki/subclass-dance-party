@@ -39,7 +39,7 @@ $(document).ready(function() {
   });
 
   $('.interact').on('click', function(event) {
-    var min, current1, current2, dancer1, dancer2, top, left, distance;
+    var min, index1, index2, current1, current2, dancer1, dancer2, top, left, distance;
     for (var i = 0; i < window.dancers.length; i++) {
       current1 = window.dancers[i];
       for (var j = 0; j < window.dancers.length; j++) {
@@ -52,9 +52,19 @@ $(document).ready(function() {
             min = distance;
             dancer1 = current1;
             dancer2 = current2;
+            index1 = i;
+            index2 = j;
           }
         }
       }
+    }
+
+    window.dancers[index2] = 0;
+    window.dancers.splice(index1, 1);
+    window.dancers.splice(window.dancers.indexOf(0), 1);
+
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].lineUp();
     }
 
     var style1 = {
@@ -68,6 +78,8 @@ $(document).ready(function() {
     };
     dancer2.$node.css(style2);
   });
-      
+
+
+
 });
 
