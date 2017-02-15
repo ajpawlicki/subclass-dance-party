@@ -41,3 +41,22 @@ body, a:link, a:visited, a:active{
   max-width: 200px; 
   max-height: 200px;
 }
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+.rotate{
+  animation-name: rotate;
+  animation-duration: 5s; 
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.circle{
+  transform-origin: left;
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
