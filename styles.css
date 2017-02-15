@@ -52,10 +52,13 @@ body, a:link, a:visited, a:active{
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-
+@keyframes circle {
+  from {transform: rotate(360deg);}
+  to {transform: rotate(0deg);}
+}
 .circle{
   transform-origin: left;
-  animation-name: rotate;
+  animation-name: circle;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;

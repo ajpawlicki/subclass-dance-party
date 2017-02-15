@@ -1,14 +1,15 @@
 describe('blinkyDancer', function() {
 
-  var blinkyDancer, clock;
+  var blinkyDancer, blueDancer, clock;
   var timeBetweenSteps = 100;
-
+  
   beforeEach(function() {
     clock = sinon.useFakeTimers();
     blinkyDancer = new makeBlinkyDancer(10, 20, timeBetweenSteps);
+    blueDancer = new makeBlueDancer(10, 20, timeBetweenSteps);
   });
 
-  it('should have a jQuery $node object', function() {
+  it('should have a jQuery $node object for blinkyDancer', function() {
     expect(blinkyDancer.$node).to.be.an.instanceof(jQuery);
   });
 
@@ -30,5 +31,17 @@ describe('blinkyDancer', function() {
       clock.tick(timeBetweenSteps);
       expect(blinkyDancer.step.callCount).to.be.equal(2);
     });
+  });
+
+  it('should have a lineUp function that uses css function', function() {
+    sinon.spy(blueDancer.$node, 'css');
+    blueDancer.lineUp();
+    // temp = blueDancer.$node.position();
+    // debugger;
+    expect(blueDancer.$node.css.called).to.be.true;
+  });
+
+  it('should have a jQuery $node object for blueDancer', function() {
+    expect(blueDancer.$node).to.be.an.instanceof(jQuery);
   });
 });
